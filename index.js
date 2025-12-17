@@ -88,6 +88,11 @@ async function fetchReport(data) {
   try {
     const url = "https://openworker.roeu1996.workers.dev/";
 
+    // 打印请求的消息内容
+    console.log("📤 发送给 Worker 的请求:");
+    console.log("URL:", url);
+    console.log("Messages:", JSON.stringify(messages, null, 2));
+
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -95,12 +100,15 @@ async function fetchReport(data) {
       },
       body: JSON.stringify(messages),
     });
+
     const data = await response.json();
+
+    console.log("📋 Worker 完整响应:", data);
 
     if (!response.ok) {
       throw new Error(`Worker Error: ${data.error}`);
     }
-    renderReport(data.content);
+    renderReport(data.response);
   } catch (err) {
     console.error(err.message);
     loadingArea.innerText = "Unable to access AI. Please refresh and try again";
