@@ -91,14 +91,14 @@ async function fetchReport(data) {
     // 打印请求的消息内容
     console.log("📤 发送给 Worker 的请求:");
     console.log("URL:", url);
-    console.log("Messages:", JSON.stringify(messages, null, 2));
+    console.log("messages:", JSON.stringify(messages, null, 2));
 
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(messages),
+      body: JSON.stringify({ messages: messages }),
     });
 
     const data = await response.json();
