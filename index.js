@@ -86,7 +86,8 @@ async function fetchReport(data) {
   ];
 
   try {
-    const url = "https://openworker.roeu1996.workers.dev/";
+    const url =
+      "https://gateway.ai.cloudflare.com/v1/9a351a9eca79285e1c3cb418fc21eabb/stock-prediction/compat";
 
     const response = await fetch(url, {
       method: "POST",
